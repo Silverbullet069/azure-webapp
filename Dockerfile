@@ -7,5 +7,5 @@ WORKDIR /app
 COPY ["package.json", "package-lock.json*", "./"]
 RUN npm install --include=dev
 COPY . .
-ENTRYPOINT [ "npm", "run", "test" ]
+ENTRYPOINT [ "npm", "run", "dev" ]
 EXPOSE 8000
