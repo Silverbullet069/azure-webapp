@@ -1,4 +1,5 @@
 const express = require("express");
+const compression = require("compression");
 const app = express();
 
 const morgan = require("morgan");
@@ -6,6 +7,9 @@ const morgan = require("morgan");
 const home = require("./routes/home");
 const login = require("./routes/login");
 const book = require("./routes/book");
+
+// greatly dec size of response body => increase speed
+app.use(compression());
 
 // parse static assets
 app.use(express.static("./public"));
@@ -18,8 +22,6 @@ app.use(express.json());
 
 // logging response
 app.use(morgan("tiny"));
-
-// greatly dec size of response body => increase speed
 
 // base path
 app.use("/api/books", book);
